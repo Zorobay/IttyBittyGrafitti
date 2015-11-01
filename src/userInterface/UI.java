@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -41,9 +42,6 @@ public class UI extends Application {
 		
 		//set up test image
 		//Image img = new Image()
-		// Canvas event
-		canvas.getGraphicsContext2D().setFill(Color.BLANCHEDALMOND);
-		canvas.setOnMouseDragged(mouseDraggedCanvas);
 		
 		HBox hbox = new HBox();
 		Button b = new Button("Brush");
@@ -54,10 +52,4 @@ public class UI extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
-	//TODO improve paint algorithm
-	private final EventHandler<MouseEvent> mouseDraggedCanvas = event -> {
-		canvas.getGraphicsContext2D().setFill(Color.CORNFLOWERBLUE);
-		canvas.getGraphicsContext2D().fillOval(event.getX(), event.getY(), 5, 5);
-	};
 }
