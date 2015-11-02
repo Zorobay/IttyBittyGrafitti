@@ -70,6 +70,10 @@ public class IBGCanvas extends Canvas {
 		graphics.setLineWidth(size);
 	}
 
+	public void setForegroundColor(Color color){
+		this.getGraphicsContext2D().setStroke(color);
+	}
+
 	public double getMouseX() {
 		return mouseX;
 	}

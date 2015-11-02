@@ -2,6 +2,8 @@ package userInterface;
 
 import canvas.IBGCanvas;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -9,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -19,8 +22,9 @@ import tools.Toolbar;
 
 public class UI extends Application {
 
-	private IBGCanvas canvas = new IBGCanvas();
-
+	private final IBGCanvas canvas = new IBGCanvas();
+	private final ColorPicker colorPicker;
+	
 	public static void main(String[] args) {
 
 		launch(args);
@@ -50,6 +54,11 @@ public class UI extends Application {
 		roundBrushButton.setOnMouseClicked(roundBrushButtonClicked);
 		squareBrushButton.setOnMouseClicked(squareBrushButtonClicked);
 		
+
+		//Set up the colorpicker
+		colorPicker = new ColorPicker();
+		colorPicker.setOnAction(colorPickerClicked);
+
 		//Set up slider for brush size
 		Slider brushSizeSlider = new Slider(0,100,5);
 		brushSizeSlider.setMajorTickUnit(20);
@@ -67,7 +76,7 @@ public class UI extends Application {
 		pane.add(brushSizeSlider, 0, 2);
 		
 		HBox hbox = new HBox();
-		hbox.getChildren().addAll(roundBrushButton, squareBrushButton);
+		hbox.getChildren().addAll(roundBrushButton, squareBrushButton, colorPicker);
 		pane.add(hbox, 0, 0);
 
 		Scene scene = new Scene(pane);
@@ -85,5 +94,10 @@ public class UI extends Application {
 	// brush as active tool
 	private final EventHandler<MouseEvent> squareBrushButtonClicked = event -> {
 		Toolbar.setActiveTool(1);
+	};
+
+	// Handle colorpicker events
+	private final EventHandler<ActionEvent> colorPickerClicked = event ->{
+		canvas.setForegroundColor(colorPicker.getValue());
 	};
 }
