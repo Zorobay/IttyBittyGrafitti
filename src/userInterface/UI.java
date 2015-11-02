@@ -2,11 +2,14 @@ package userInterface;
 
 import canvas.IBGCanvas;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -46,7 +49,23 @@ public class UI extends Application {
 		Button squareBrushButton = new Button("\u25A0");
 		roundBrushButton.setOnMouseClicked(roundBrushButtonClicked);
 		squareBrushButton.setOnMouseClicked(squareBrushButtonClicked);
-
+		
+		//Set up slider for brush size
+		Slider brushSizeSlider = new Slider(0,100,5);
+		brushSizeSlider.setMajorTickUnit(20);
+		brushSizeSlider.setMinorTickCount(4);
+		brushSizeSlider.setBlockIncrement(5);
+		brushSizeSlider.showTickLabelsProperty();
+		brushSizeSlider.showTickMarksProperty();
+		
+		brushSizeSlider.valueProperty().addListener(new ChangeListener<Number>() {
+		    public void changed(ObservableValue<? extends Number> observable,
+		            Number oldValue, Number newValue) {
+		        canvas.setBrushSize(newValue.intValue());
+		    }
+		});
+		pane.add(brushSizeSlider, 0, 2);
+		
 		HBox hbox = new HBox();
 		hbox.getChildren().addAll(roundBrushButton, squareBrushButton);
 		pane.add(hbox, 0, 0);
@@ -67,5 +86,4 @@ public class UI extends Application {
 	private final EventHandler<MouseEvent> squareBrushButtonClicked = event -> {
 		Toolbar.setActiveTool(1);
 	};
-
 }

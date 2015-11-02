@@ -12,5 +12,4 @@ public class Brush extends Tool {
 	public StrokeLineCap getLineCap(){
 		return lineCap;
 	}
-
 }
