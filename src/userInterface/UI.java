@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import tools.SaveTool;
 import tools.Toolbar;
 
 public class UI extends Application {
@@ -57,6 +58,9 @@ public class UI extends Application {
 
 		//Set up the colorpicker
 		colorPicker.setOnAction(colorPickerClicked);
+		
+		//Set up save button
+		Button saveButton = new Button("Save");
 
 		//Set up slider for brush size
 		Slider brushSizeSlider = new Slider(0,100,5);
@@ -75,7 +79,7 @@ public class UI extends Application {
 		pane.add(brushSizeSlider, 0, 2);
 		
 		HBox hbox = new HBox();
-		hbox.getChildren().addAll(roundBrushButton, squareBrushButton, colorPicker);
+		hbox.getChildren().addAll(roundBrushButton, squareBrushButton, colorPicker, saveButton);
 		pane.add(hbox, 0, 0);
 
 		Scene scene = new Scene(pane);
@@ -93,6 +97,9 @@ public class UI extends Application {
 	// brush as active tool
 	private final EventHandler<MouseEvent> squareBrushButtonClicked = event -> {
 		Toolbar.setActiveTool(1);
+	};
+	private final EventHandler<MouseEvent> saveButtonClicked = event -> {
+		SaveTool.saveCanvas(canvas);
 	};
 
 	// Handle colorpicker events
