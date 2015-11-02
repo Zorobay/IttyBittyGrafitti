@@ -6,19 +6,20 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import tools.Toolbar;
 
 public class UI extends Application {
-	
+
 	private IBGCanvas canvas = new IBGCanvas();
 
 	public static void main(String[] args) {
+
 		launch(args);
 	}
 
@@ -39,17 +40,30 @@ public class UI extends Application {
 		canvas.setWidth(600);
 		canvas.getGraphicsContext2D().setFill(Color.WHITE);
 		canvas.getGraphicsContext2D().fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-		
-		//set up test image
-		//Image img = new Image()
-		
-		HBox hbox = new HBox();
-		Button b = new Button("Brush");
-		hbox.getChildren().addAll(b);
-		pane.add(hbox, 0, 0);
 
+		// Set up brush buttons
+		Button roundBrushButton = new Button("\u25CF");
+		Button squareBrushButton = new Button("\u25A0");
+		roundBrushButton.setOnMouseClicked(roundBrushButtonClicked);
+		squareBrushButton.setOnMouseClicked(squareBrushButtonClicked);
+
+		HBox hbox = new HBox();
+		hbox.getChildren().addAll(roundBrushButton, squareBrushButton);
+		pane.add(hbox, 0, 0);
+		
 		Scene scene = new Scene(pane);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	// Event handler for round brush button. When clicked, select the round brush as active tool
+		private final EventHandler<MouseEvent> roundBrushButtonClicked = event -> {
+			Toolbar.setActiveTool(0);
+		};
+		
+	// Event handler for square brush button. When clicked, select the square brush as active tool
+	private final EventHandler<MouseEvent> squareBrushButtonClicked = event -> {
+		Toolbar.setActiveTool(1);
+	};
+
+	
 }
