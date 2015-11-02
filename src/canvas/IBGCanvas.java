@@ -23,7 +23,7 @@ public class IBGCanvas extends Canvas {
 
 	// Paints when dragging
 	private final EventHandler<MouseEvent> mouseDraggedCanvas = event -> {
-		this.getGraphicsContext2D().setStroke(Color.DARKGREEN);
+		
 		this.getGraphicsContext2D().setLineWidth(5);
 
 		// TODO THIS IS PROBABLY NOT A SUSTAINABLE SOLUTION!!
@@ -39,7 +39,7 @@ public class IBGCanvas extends Canvas {
 	// produced between the release point of the last stroke and the pressed
 	// point of the new stroke
 	private final EventHandler<MouseEvent> mousePressedCanvas = event -> {
-		this.getGraphicsContext2D().setStroke(Color.DARKGREEN);
+		
 		this.getGraphicsContext2D().setLineWidth(5);
 		
 		// TODO THIS IS PROBABLY NOT A SUSTAINABLE SOLUTION!!
@@ -71,5 +71,8 @@ public class IBGCanvas extends Canvas {
 
 	public double getMouseY() {
 		return mouseY;
+	}
+	public void setForegroundColor(Color color){
+		this.getGraphicsContext2D().setStroke(color);
 	}
 }
