@@ -6,7 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import tools.Tool;
 import tools.Toolbar;
-import tools.brush.Brush;
+import tools.Brush;
 
 //This class will be used to define our own customized canvas.
 //TODO Come up with a better name

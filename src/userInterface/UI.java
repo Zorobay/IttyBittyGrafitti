@@ -50,20 +50,22 @@ public class UI extends Application {
 		HBox hbox = new HBox();
 		hbox.getChildren().addAll(roundBrushButton, squareBrushButton);
 		pane.add(hbox, 0, 0);
-		
+
 		Scene scene = new Scene(pane);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	// Event handler for round brush button. When clicked, select the round brush as active tool
-		private final EventHandler<MouseEvent> roundBrushButtonClicked = event -> {
-			Toolbar.setActiveTool(0);
-		};
-		
-	// Event handler for square brush button. When clicked, select the square brush as active tool
+
+	// Event handler for round brush button. When clicked, select the round
+	// brush as active tool
+	private final EventHandler<MouseEvent> roundBrushButtonClicked = event -> {
+		Toolbar.setActiveTool(0);
+	};
+
+	// Event handler for square brush button. When clicked, select the square
+	// brush as active tool
 	private final EventHandler<MouseEvent> squareBrushButtonClicked = event -> {
 		Toolbar.setActiveTool(1);
 	};
 
-	
 }

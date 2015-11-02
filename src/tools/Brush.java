@@ -1,7 +1,6 @@
-package tools.brush;
+package tools;
 
 import javafx.scene.shape.StrokeLineCap;
-import tools.Tool;
 
 public class Brush extends Tool {
 	private StrokeLineCap lineCap;
