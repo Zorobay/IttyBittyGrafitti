@@ -97,6 +97,7 @@ public class UI extends Application {
 
 	// Handle colorpicker events
 	private final EventHandler<ActionEvent> colorPickerClicked = event ->{
+		System.out.println("hej");
 		canvas.setForegroundColor(colorPicker.getValue());
 	};
 }
