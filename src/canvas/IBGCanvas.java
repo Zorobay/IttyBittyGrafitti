@@ -25,8 +25,6 @@ public class IBGCanvas extends Canvas {
 
 	// Paints when dragging
 	private final EventHandler<MouseEvent> mouseDraggedCanvas = event -> {
-		graphics.setStroke(Color.DARKGREEN);
-
 		// TODO THIS IS PROBABLY NOT A SUSTAINABLE SOLUTION!!
 		Tool activeTool = Toolbar.getActiveTool();
 		if (activeTool instanceof Brush) {
@@ -40,7 +38,6 @@ public class IBGCanvas extends Canvas {
 	// produced between the release point of the last stroke and the pressed
 	// point of the new stroke
 	private final EventHandler<MouseEvent> mousePressedCanvas = event -> {
-		graphics.setStroke(Color.DARKGREEN);
 		
 		// TODO THIS IS PROBABLY NOT A SUSTAINABLE SOLUTION!!
 		Tool activeTool = Toolbar.getActiveTool();
