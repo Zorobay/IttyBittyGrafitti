@@ -23,7 +23,7 @@ import tools.Toolbar;
 public class UI extends Application {
 
 	private final IBGCanvas canvas = new IBGCanvas();
-	private final ColorPicker colorPicker;
+	private final ColorPicker colorPicker = new ColorPicker();
 	
 	public static void main(String[] args) {
 
@@ -56,7 +56,6 @@ public class UI extends Application {
 		
 
 		//Set up the colorpicker
-		colorPicker = new ColorPicker();
 		colorPicker.setOnAction(colorPickerClicked);
 
 		//Set up slider for brush size
