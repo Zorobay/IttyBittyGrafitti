@@ -61,6 +61,7 @@ public class UI extends Application {
 		
 		//Set up save button
 		Button saveButton = new Button("Save");
+		saveButton.setOnMouseClicked(saveButtonClicked);
 
 		//Set up slider for brush size
 		Slider brushSizeSlider = new Slider(0,100,5);
@@ -98,10 +99,13 @@ public class UI extends Application {
 	private final EventHandler<MouseEvent> squareBrushButtonClicked = event -> {
 		Toolbar.setActiveTool(1);
 	};
+	
+	//TODO: Implement save feature
+	
 	private final EventHandler<MouseEvent> saveButtonClicked = event -> {
-		SaveTool.saveCanvas(canvas);
+		SaveTool.saveCanvas(canvas, "test.png", "C:/");
 	};
-
+	
 	// Handle colorpicker events
 	private final EventHandler<ActionEvent> colorPickerClicked = event ->{
 		System.out.println("hej");
